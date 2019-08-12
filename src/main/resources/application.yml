@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: fuxi
+  cloud:
+    consul:
+    host: localhost
+    port: 8500
+    discovery:
+      serviceName: fuxi
+      health-check-path: /health
+      health-check-timeout: 20s
+      health-check-critical-timeout: 5m
+      register: true
+  datasource:
+      url: jdbc:mysql:///fuxi?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      validationQuery: SELECT 1 FROM DUAL
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.entity
+server:
+  port: 8081
+mytest:
+  service:
+   xingtian: xingtian
